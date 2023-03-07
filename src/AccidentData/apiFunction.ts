@@ -1,12 +1,13 @@
-import { db } from './db'
+import { db } from "./db";
 
 export const getAccidentData = (args: {
   yearQuery: Array<number>;
   vehicleQuery: string;
 }) => {
+  console.log("args", args);
   const sql =
-    args.yearQuery.length !== 0
-      ? args.vehicleQuery !== "ทั้งหมด"
+    args.yearQuery && args.yearQuery.length !== 0
+      ? args.vehicleQuery && args.vehicleQuery !== "ทั้งหมด"
         ? `SELECT * FROM accident.accident 
   WHERE "deadyearBudha" >= ${args.yearQuery[0]} AND 
   "deadyearBudha" <= ${args.yearQuery[1]} AND 
@@ -14,7 +15,7 @@ export const getAccidentData = (args: {
         : `SELECT * FROM accident.accident 
   WHERE "deadyearBudha" >= ${args.yearQuery[0]} AND 
   "deadyearBudha" <= ${args.yearQuery[1]}`
-      : args.vehicleQuery !== "ทั้งหมด"
+      : args.vehicleQuery && args.vehicleQuery !== "ทั้งหมด"
       ? `SELECT * FROM accident.accident WHERE vehicle = '${args.vehicleQuery}'`
       : `SELECT * FROM accident.accident `;
 

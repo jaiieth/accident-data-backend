@@ -5,10 +5,11 @@ import {
 } from "./apiFunction";
 import { Request, Response, response } from "express";
 import * as t from "io-ts";
+import { optional } from "io-ts-extra";
 
 const getAccidentDataCodec = t.type({
-  yearQuery: t.array(t.number),
-  vehicleQuery: t.string,
+  yearQuery: optional(t.array(t.number)),
+  vehicleQuery: optional(t.string),
 });
 
 export const getAccidentDataHandler = (req: Request, res: Response) => {
