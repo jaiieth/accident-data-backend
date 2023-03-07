@@ -1,0 +1,13 @@
+model accident {
+  id            Int       @id
+  deadyearBudha Int?
+  deadyear      Int?
+  age           Int?
+  sex           Int?
+  deadDate      DateTime?
+  province      String?
+  latitude      Float?
+  longitude     Float?
+  icd10         String?
+  vehicle       String?
+}
