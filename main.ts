@@ -1,6 +1,6 @@
 import express, { Application, Request, Response } from "express";
 import { AccidentRoutes } from "./src/AccidentData";
-import { createClient } from "@supabase/supabase-js";
+// import { createClient } from "@supabase/supabase-js";
 import dotenv from "dotenv";
 import cors from "cors";
 // import { createAccidentTable } from "./src/AccidentData/createAccidentTable";
@@ -8,13 +8,12 @@ import cors from "cors";
 
 dotenv.config();
 
-const supabaseUrl = process.env.SUPABASE_PROJECT_URL;
-const supabaseAnonKey = process.env.SUPABASE_ANONKEY;
-// console.log("supabaseurl", supabaseUrl);
-// console.log("supabaseAnonKey", supabaseAnonKey);
+// const supabaseUrl = process.env.SUPABASE_PROJECT_URL;
+// const supabaseAnonKey = process.env.SUPABASE_ANONKEY;
 
-const supabase =
-  supabaseUrl && supabaseAnonKey && createClient(supabaseUrl, supabaseAnonKey);
+
+// const supabase =
+//   supabaseUrl && supabaseAnonKey && createClient(supabaseUrl, supabaseAnonKey);
 const app: Application = express();
 
 app.use(express.json());
@@ -23,7 +22,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://sprinttech-earth-kitchen.web.app",
+      "https://accident-map-dashboard.web.app",
     ],
   })
 );
