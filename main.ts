@@ -1,5 +1,5 @@
 import express, { Application, Request, Response } from "express";
-import compression from 'compression'
+import compression from "compression";
 import { AccidentRoutes } from "./src/AccidentData";
 // import { createClient } from "@supabase/supabase-js";
 import dotenv from "dotenv";
@@ -12,13 +12,11 @@ dotenv.config();
 const app: Application = express();
 
 app.use(express.json());
-app.use(compression())
+app.use(compression());
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://accident-map-dashboard.web.app",
-    ],
+    origin: ["http://localhost:3000", "https://accident-map-dashboard.web.app"],
+    optionsSuccessStatus: 200,
   })
 );
 
