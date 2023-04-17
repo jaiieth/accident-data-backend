@@ -1,4 +1,5 @@
 import express, { Application, Request, Response } from "express";
+import compression from 'compression'
 import { AccidentRoutes } from "./src/AccidentData";
 // import { createClient } from "@supabase/supabase-js";
 import dotenv from "dotenv";
@@ -8,16 +9,10 @@ import cors from "cors";
 
 dotenv.config();
 
-// const supabaseUrl = process.env.SUPABASE_PROJECT_URL;
-// const supabaseAnonKey = process.env.SUPABASE_ANONKEY;
-
-
-// const supabase =
-//   supabaseUrl && supabaseAnonKey && createClient(supabaseUrl, supabaseAnonKey);
 const app: Application = express();
 
 app.use(express.json());
-
+app.use(compression())
 app.use(
   cors({
     origin: [
