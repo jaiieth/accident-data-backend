@@ -13,6 +13,14 @@ const app: Application = express();
 
 app.use(express.json());
 app.use(compression());
+app.use((req, res, next) => {
+  console.log(`Received ${req.method} request to ${req.url}`);
+  res.on('finish', () => {
+    console.log(`Sent response with status ${res.statusCode}`);
+  });
+  next();
+});
+
 app.use(
   cors({
     origin: ["http://localhost:3000", "https://accident-map-dashboard.web.app"],
